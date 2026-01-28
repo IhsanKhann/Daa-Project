@@ -16,7 +16,3 @@ plots/
 # Ignore system files
 Thumbs.db
 .DS_Store
-
-# Ignore PowerShell scripts output (optional)
-build1.log
-build2.log
