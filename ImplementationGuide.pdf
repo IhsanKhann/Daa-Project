@@ -1,0 +1,142 @@
+Step 1: Setting up Git and GitHub
+
+Install Git: https://git-scm.com/downloads
+
+Create a GitHub account: https://github.com
+
+Create a new repository on GitHub, e.g., DAA-Benchmark.
+
+Step 2: Clone the repository
+
+Open PowerShell or Terminal.
+
+Navigate to the folder where you want to store the project:
+
+cd C:\Users\7480\Desktop
+
+
+Clone your GitHub repo:
+
+git clone https://github.com/<your-username>/DAA-Benchmark.git
+cd DAA-Benchmark
+
+Step 3: Project Structure
+
+algorithms/ → place your C++ algorithm files here (e.g., linear.cpp, binary.cpp).
+
+launcher/ → contains the launcher code that runs benchmarks.
+
+build/ → compiled .exe files go here (created automatically).
+
+results/ → CSV files with benchmark results.
+
+plots/ → optional, for generating plots later.
+
+Tip: All paths in launcher and PowerShell scripts point to these folders.
+
+Step 4: Installing VSCode (optional)
+
+Download VSCode: https://code.visualstudio.com/
+
+Open the project folder in VSCode: File -> Open Folder -> DAA-Benchmark
+
+Install recommended extensions:
+
+C/C++
+
+Code Runner
+
+If not using VSCode, skip this step and use PowerShell for builds and running.
+
+Step 5: Building the project
+
+Option 1: Using PowerShell scripts
+
+Build all algorithms:
+
+.\build1.ps
+
+
+or
+
+.\build2.ps
+
+
+These scripts:
+
+Create the build/ folder if missing
+
+Compile each .cpp in algorithms/ to .exe in build/
+
+Option 2: Using g++ manually
+
+g++ algorithms/linear.cpp -O2 -o build/linear.exe
+g++ algorithms/binary.cpp -O2 -o build/binary.exe
+g++ launcher/main.cpp -O2 -o build/launcher.exe
+
+Step 6: Running the benchmark
+
+Navigate to the launcher folder or wherever launcher.exe is compiled:
+
+cd build
+
+
+Run the launcher:
+
+.\launcher.exe
+
+
+The program will:
+
+Run all algorithms on all input sizes
+
+Wait for the core to be lightly loaded (~20% usage)
+
+Measure execution times
+
+Save results in results/results.csv
+
+View results by opening the CSV in Excel or a text editor.
+
+Step 7: Customizing the benchmark
+
+Change input sizes: edit sizes in launcher/main.cpp.
+
+Change algorithms: add .cpp in algorithms/ and update algos & names vectors in launcher/main.cpp.
+
+Change CPU core: modify testCore variable in launcher/main.cpp.
+
+Change CPU load threshold: modify allowedIdlePercent (default 20 → 80% free for algorithm).
+
+View results: open results/results.csv.
+
+Step 8: Using GitHub
+
+Add changes:
+
+git add .
+
+
+Commit changes:
+
+git commit -m "Added new algorithm"
+
+
+Push to GitHub:
+
+git push origin main
+
+
+Pull updates from GitHub:
+
+git pull origin main
+
+Step 9: Notes & Tips
+
+Always run build scripts before running the launcher.
+
+Keep all .cpp files in algorithms/ for easy management.
+
+Use the same core for all tests to maintain fair comparisons.
+
+Use plots/ folder to visualize results later.

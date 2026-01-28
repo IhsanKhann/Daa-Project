@@ -1,0 +1,8 @@
+In desktop => open folder => Daa => right click and open Terminal in that folder.
+ C:\Users\7480\Desktop\Daa> 
+
+ Run the following commands: 
+ ./build1.ps
+
+ After that:
+ ./build/launcher.exe
